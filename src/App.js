@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
 import './App.css';
+import Navbar from './components/Navbar';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const user = "Michal";
+  const surename  = "Petricek";
+  const [theme, setTheme] = useState(true); 
+  const changeTheme = async () => {
+    setTheme(!theme);
+    console.log("currentTheme", theme);
+
+  };
+
+  if(theme === true)
+  {
+    return (
+      <>
+      <Navbar user={user} prijmeni={surename} tema={theme} metoda={changeTheme} ></Navbar>
+      <div className={theme}>Dark</div>
+      </>
+    );
+  }
+  else
+  {
+    return (
+      <>
+      <Navbar user={user} prijmeni={surename} tema={theme} metoda={changeTheme} ></Navbar>
+      <div className={theme}>Light</div>
+      </>
+    );
+  }
 }
 
 export default App;
