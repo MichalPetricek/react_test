@@ -1,35 +1,26 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import Navbar from './components/Navbar';
+import Zidle from './components/Zidle';
+import Stul from './components/Stul';
 
 function App() {
-  const user = "Michal";
-  const surename  = "Petricek";
-  const [theme, setTheme] = useState(true); 
-  const changeTheme = async () => {
-    setTheme(!theme);
-    console.log("currentTheme", theme);
 
-  };
-
-  if(theme === true)
-  {
+  const [totalCount, setTotalCount] = useState(0);
+ 
     return (
       <>
-      <Navbar user={user} prijmeni={surename} tema={theme} metoda={changeTheme} ></Navbar>
-      <div className={theme}>Dark</div>
+      <div>
+            <h1>U Poníka</h1>
+            <p>celkem: {totalCount}</p>
+        </div>
+      <Stul totalCount={totalCount} setTotalCount={setTotalCount} cisloStolu="1"></Stul>
+      <Stul totalCount={totalCount} setTotalCount={setTotalCount} cisloStolu="2"></Stul>
+      <Stul totalCount={totalCount} setTotalCount={setTotalCount} cisloStolu="3"></Stul>
+      <Stul totalCount={totalCount} setTotalCount={setTotalCount} cisloStolu="4"></Stul>
+      
       </>
     );
-  }
-  else
-  {
-    return (
-      <>
-      <Navbar user={user} prijmeni={surename} tema={theme} metoda={changeTheme} ></Navbar>
-      <div className={theme}>Light</div>
-      </>
-    );
-  }
+ 
 }
 
 export default App;
